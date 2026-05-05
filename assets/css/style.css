@@ -1,18 +1,16 @@
-/*--------------------------------------------------------------
-# Modern Design Tokens
---------------------------------------------------------------*/
 :root {
-  --primary: #3b82f6; /* Modern Electric Blue */
-  --primary-glow: rgba(59, 130, 246, 0.5);
-  --accent: #10b981;  /* Emerald Accent */
+  --primary: #3b82f6; /* Electric Blue */
+  --primary-glow: rgba(59, 130, 246, 0.3);
+  --accent: #10b981;  /* Emerald */
   --bg-dark: #0a0a0a;
-  --surface: rgba(255, 255, 255, 0.05);
-  --surface-hover: rgba(255, 255, 255, 0.08);
-  --border: rgba(255, 255, 255, 0.1);
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-hover: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.08);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-bg: rgba(15, 23, 42, 0.8);
   --glass-border: rgba(255, 255, 255, 0.1);
+  --gradient-tech: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
 }
 
 /*--------------------------------------------------------------
@@ -24,17 +22,34 @@ body {
   color: var(--text-main);
   position: relative;
   background: transparent;
+  line-height: 1.6;
 }
 body::before {
   content: "";
   position: fixed;
-  background: var(--bg-dark) url("../img/bg.jpg") top right no-repeat;
+  background: var(--bg-dark) url("../img/tech_bg.png") center center no-repeat;
   background-size: cover;
   left: 0;
   right: 0;
   top: 0;
   height: 100vh;
   z-index: -1;
+  opacity: 0.8;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -1;
+  pointer-events: none;
 }
 @media (min-width: 1024px) {
   body::before {
@@ -73,27 +88,32 @@ h1, h2, h3, h4, h5, h6 {
   transition: ease-in-out 0.3s;
 }
 #header h1 {
-  font-size: 48px;
+  font-size: 64px;
   margin: 0;
   padding: 0;
-  line-height: 1;
-  font-weight: 700;
-  font-family: "Poppins", sans-serif;
+  line-height: 1.1;
+  font-weight: 800;
+  font-family: "Outfit", sans-serif;
+  letter-spacing: -1px;
 }
-#header h1 a, #header h1 a:hover {
-  color: #fff;
-  line-height: 1;
-  display: inline-block;
+#header h1 a {
+  background: var(--gradient-tech);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 #header h2 {
-  font-size: 24px;
-  margin-top: 20px;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 20px;
+  margin-top: 24px;
+  color: var(--text-muted);
+  font-weight: 400;
+  max-width: 600px;
 }
 #header h2 span {
-  color: #fff;
+  color: var(--text-main);
   border-bottom: 2px solid var(--primary);
-  padding-bottom: 6px;
+  padding-bottom: 4px;
+  font-weight: 600;
 }
 #header img {
   padding: 0;
@@ -193,21 +213,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 30px;
 }
 .navbar a, .navbar a:focus {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0;
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
-  white-space: nowrap;
-  transition: 0.3s;
-}
-.navbar a i, .navbar a:focus i {
-  font-size: 12px;
-  line-height: 0;
-  margin-left: 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
 }
 .navbar a:before {
   content: "";
@@ -216,7 +225,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 2px;
   bottom: -4px;
   left: 0;
-  background-color: var(--primary);
+  background: var(--gradient-tech);
   visibility: hidden;
   width: 0px;
   transition: all 0.3s ease-in-out 0s;
@@ -313,12 +322,13 @@ section.section-show {
   padding-bottom: 45px;
 }
 section .container {
-  background: rgba(10, 10, 10, 0.7);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 30px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 50px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 @media (max-width: 768px) {
   section {
@@ -350,12 +360,15 @@ section .container {
 }
 .section-title p {
   margin: 0;
-  margin: -15px 0 15px 0;
-  font-size: 36px;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-family: "Poppins", sans-serif;
-  color: #fff;
+  margin: -15px 0 30px 0;
+  font-size: 42px;
+  font-weight: 800;
+  text-transform: none;
+  font-family: "Outfit", sans-serif;
+  background: var(--gradient-tech);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /*--------------------------------------------------------------
@@ -1023,53 +1036,83 @@ section .container {
 # Custom Tech Card
 --------------------------------------------------------------*/
 .tech-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  padding: 20px;
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-tech);
+  opacity: 0;
+  transition: 0.4s;
+  z-index: -1;
 }
 
 .tech-card:hover {
-  transform: translateY(-5px);
-  background: var(--surface-hover);
-  border-color: var(--primary);
-  box-shadow: 0 10px 30px -10px var(--primary-glow);
+  transform: translateY(-10px);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 20px 40px -20px var(--primary-glow);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .tech-card .icon {
-  font-size: 2rem;
-  color: var(--primary);
-  margin-bottom: 15px;
+  font-size: 2.5rem;
+  background: var(--gradient-tech);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
 }
 
 .tech-card h4 {
   color: var(--text-main);
-  font-size: 1.25rem;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  font-family: "Outfit", sans-serif;
 }
 
 .tech-card p {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
   flex-grow: 1;
 }
 
-.tech-card .tech-stack {
-  margin-top: 15px;
+.tech-stack {
+  margin-top: 24px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.tech-card .tech-tag {
-  font-size: 0.75rem;
-  padding: 4px 8px;
-  background: rgba(59, 130, 246, 0.1);
+.tech-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: 0.3s;
+}
+
+.tech-card:hover .tech-tag {
+  border-color: var(--primary);
   color: var(--primary);
-  border-radius: 4px;
-  border: 1px solid rgba(59, 130, 246, 0.2);
 }
