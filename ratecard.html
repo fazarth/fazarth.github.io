@@ -149,13 +149,12 @@
       color: var(--text-muted);
       font-size: 0.95rem;
       margin-bottom: 24px;
-      flex-grow: 1;
     }
 
     .pricing-card ul {
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin-top: auto;
       border-top: 1px solid var(--border);
       padding-top: 20px;
     }
@@ -274,7 +273,7 @@
           <span class="currency">$</span><span class="amount" id="price-hourly">30</span>
           <span class="period">/ hour</span>
         </div>
-        <p class="description">Ideal for ad-hoc consultation, bug fixing, emergency hotfixes, or short-term assistance.</p>
+        <p class="description" id="desc-hourly">Ideal for ad-hoc consultation, bug fixing, emergency support, or short-term tasks.</p>
         <ul>
           <li><i class="bi bi-check2"></i> <span id="lbl-h1">Direct developer access</span></li>
           <li><i class="bi bi-check2"></i> <span id="lbl-h2">Timesheet logging</span></li>
@@ -290,7 +289,7 @@
           <span class="currency">$</span><span class="amount" id="price-parttime">2,000</span>
           <span class="period">/ month</span>
         </div>
-        <p class="description">Perfect for continuous feature developments, integrations, and weekly system maintenance.</p>
+        <p class="description" id="desc-parttime">Perfect for ongoing feature development, system integration, and weekly maintenance.</p>
         <ul>
           <li><i class="bi bi-check2"></i> <span id="lbl-p1">~20 hours per week</span></li>
           <li><i class="bi bi-check2"></i> <span id="lbl-p2">Dedicated development</span></li>
@@ -306,7 +305,7 @@
           <span class="currency">Starts at $</span><span class="amount" id="price-project">1,500</span>
           <span class="period"></span>
         </div>
-        <p class="description">Best for custom full-cycle product development with a defined scope of work.</p>
+        <p class="description" id="desc-project">Best for end-to-end product development with a clearly defined scope of work.</p>
         <ul>
           <li><i class="bi bi-check2"></i> <span id="lbl-f1">Fixed price & clear scope</span></li>
           <li><i class="bi bi-check2"></i> <span id="lbl-f2">Milestone-based delivery</span></li>
@@ -351,6 +350,9 @@
         hourly: "30",
         parttime: "2,000",
         project: "1,500",
+        descHourly: "Ideal for ad-hoc consultation, bug fixing, emergency support, or short-term tasks.",
+        descParttime: "Perfect for ongoing feature development, system integration, and weekly maintenance.",
+        descProject: "Best for end-to-end product development with a clearly defined scope of work.",
         lblH1: "Direct developer access",
         lblH2: "Timesheet logging",
         lblH3: "Flexible schedule",
@@ -371,6 +373,9 @@
         hourly: "250.000",
         parttime: "15.000.000",
         project: "10.000.000",
+        descHourly: "Cocok untuk konsultasi ad-hoc, perbaikan bug, penanganan darurat, atau tugas jangka pendek.",
+        descParttime: "Sangat pas untuk pengembangan fitur berkelanjutan, integrasi sistem, dan pemeliharaan rutin.",
+        descProject: "Terbaik untuk pengembangan produk lengkap dari awal dengan ruang lingkup yang jelas.",
         lblH1: "Akses langsung developer",
         lblH2: "Laporan jam kerja (Timesheet)",
         lblH3: "Jadwal kerja fleksibel",
@@ -406,6 +411,11 @@
       document.getElementById('price-hourly').innerText = data[region].hourly;
       document.getElementById('price-parttime').innerText = data[region].parttime;
       document.getElementById('price-project').innerText = data[region].project;
+
+      // Update descriptions
+      document.getElementById('desc-hourly').innerText = data[region].descHourly;
+      document.getElementById('desc-parttime').innerText = data[region].descParttime;
+      document.getElementById('desc-project').innerText = data[region].descProject;
 
       // Update card list labels
       document.getElementById('lbl-h1').innerText = data[region].lblH1;
