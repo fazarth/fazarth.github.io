@@ -77,12 +77,17 @@
       box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
     }
 
-    /* Pricing Section */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
       margin-bottom: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     .pricing-card {
@@ -145,6 +150,12 @@
       letter-spacing: 0;
     }
 
+    .card-top {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
     .pricing-card p.description {
       color: var(--text-muted);
       font-size: 0.95rem;
@@ -154,7 +165,6 @@
     .pricing-card ul {
       list-style: none;
       padding: 0;
-      margin-top: auto;
       border-top: 1px solid var(--border);
       padding-top: 20px;
     }
@@ -268,12 +278,14 @@
     <div class="pricing-grid">
       <!-- Hourly -->
       <div class="pricing-card">
-        <h3>Hourly Rate</h3>
-        <div class="price">
-          <span class="currency">$</span><span class="amount" id="price-hourly">30</span>
-          <span class="period">/ hour</span>
+        <div class="card-top">
+          <h3>Hourly Rate</h3>
+          <div class="price">
+            <span class="currency">$</span><span class="amount" id="price-hourly">30</span>
+            <span class="period">/ hour</span>
+          </div>
+          <p class="description" id="desc-hourly">Ideal for ad-hoc consultation, bug fixing, emergency support, or short-term tasks.</p>
         </div>
-        <p class="description" id="desc-hourly">Ideal for ad-hoc consultation, bug fixing, emergency support, or short-term tasks.</p>
         <ul>
           <li><i class="bi bi-check2"></i> <span id="lbl-h1">Direct developer access</span></li>
           <li><i class="bi bi-check2"></i> <span id="lbl-h2">Timesheet logging</span></li>
@@ -284,12 +296,14 @@
       <!-- Part-Time Retainer -->
       <div class="pricing-card popular">
         <div class="popular-tag">Popular</div>
-        <h3>Part-Time Retainer</h3>
-        <div class="price">
-          <span class="currency">$</span><span class="amount" id="price-parttime">2,000</span>
-          <span class="period">/ month</span>
+        <div class="card-top">
+          <h3>Part-Time Retainer</h3>
+          <div class="price">
+            <span class="currency">$</span><span class="amount" id="price-parttime">2,000</span>
+            <span class="period">/ month</span>
+          </div>
+          <p class="description" id="desc-parttime">Perfect for ongoing feature development, system integration, and weekly maintenance.</p>
         </div>
-        <p class="description" id="desc-parttime">Perfect for ongoing feature development, system integration, and weekly maintenance.</p>
         <ul>
           <li><i class="bi bi-check2"></i> <span id="lbl-p1">~20 hours per week</span></li>
           <li><i class="bi bi-check2"></i> <span id="lbl-p2">Dedicated development</span></li>
@@ -300,12 +314,14 @@
 
       <!-- Project-Based -->
       <div class="pricing-card">
-        <h3>Project-Based</h3>
-        <div class="price">
-          <span class="currency">Starts at $</span><span class="amount" id="price-project">1,500</span>
-          <span class="period"></span>
+        <div class="card-top">
+          <h3>Project-Based</h3>
+          <div class="price">
+            <span class="currency">Starts at $</span><span class="amount" id="price-project">1,500</span>
+            <span class="period"></span>
+          </div>
+          <p class="description" id="desc-project">Best for end-to-end product development with a clearly defined scope of work.</p>
         </div>
-        <p class="description" id="desc-project">Best for end-to-end product development with a clearly defined scope of work.</p>
         <ul>
           <li><i class="bi bi-check2"></i> <span id="lbl-f1">Fixed price & clear scope</span></li>
           <li><i class="bi bi-check2"></i> <span id="lbl-f2">Milestone-based delivery</span></li>
