@@ -57,7 +57,7 @@
         I build, optimize, and maintain high-performance enterprise backend applications. Specializing in C#, .NET Core, database tuning, and secure third-party integrations (such as customs systems and ERPs) to ensure system reliability and efficiency.
       </p>
       <div class="social-links">
-        <a href="https://wa.me/+6281222297568" class="social-btn" target="_blank" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        <a href="#" onclick="openContact('wa', event)" class="social-btn" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
         <a href="https://www.linkedin.com/in/fazarth/" class="social-btn" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
         <a href="mailto:tezzafazarth@gmail.com" class="social-btn" target="_blank" title="Email"><i class="bi bi-envelope"></i></a>
         <a href="https://github.com/fazarth" class="social-btn" target="_blank" title="GitHub"><i class="bx bxl-github"></i></a>
@@ -195,17 +195,6 @@
           </div>
         </div>
 
-        <!-- Open Source Blueprint -->
-        <div class="portfolio-card" data-category="dev" style="border-style: dashed; background: var(--primary-light);">
-          <h3>Logistics Gateway (OS)</h3>
-          <p>An open-source clean architecture blueprint demonstrating CQRS, transactional outbox patterns, distributed caching, and API resilience policies. <span style="color: var(--primary); font-weight:600;">(In Development)</span></p>
-          <div class="portfolio-tags">
-            <span class="portfolio-tag">.NET 8/9</span>
-            <span class="portfolio-tag">Redis</span>
-            <span class="portfolio-tag">RabbitMQ</span>
-            <span class="portfolio-tag">Docker</span>
-          </div>
-        </div>
 
         <!-- DB Tuning -->
         <div class="portfolio-card" data-category="db">
@@ -292,10 +281,10 @@
           <h3>LinkedIn</h3>
           <p>linkedin.com/in/fazarth</p>
         </a>
-        <a href="https://wa.me/+6281222297568" class="contact-card" target="_blank">
+        <a href="#" onclick="openContact('wa', event)" class="contact-card">
           <i class="bi bi-whatsapp"></i>
           <h3>WhatsApp</h3>
-          <p>+62 812 2229 7568</p>
+          <p>Chat on WhatsApp</p>
         </a>
       </div>
     </div>
@@ -310,6 +299,17 @@
 
   <!-- Simple Scripts -->
   <script>
+    function openContact(type, event) {
+      if (event) event.preventDefault();
+      if (type === 'wa') {
+        const country = '62';
+        const num1 = '812';
+        const num2 = '2229';
+        const num3 = '7568';
+        window.open('https://wa.me/' + country + num1 + num2 + num3, '_blank');
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       // Portfolio Filter
       const filterBtns = document.querySelectorAll('.filter-btn');
