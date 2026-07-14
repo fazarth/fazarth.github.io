@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Rate Card | Tezza Fazar</title>
+  <meta content="Freelance rates and engagement models for Tezza Fazar Tri Hidayat, Backend Software Engineer." name="description">
+
+  <!-- Favicons -->
+  <link href="assets/img/TF.png" rel="icon" type="image/png" />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files (for Icons) -->
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  
+  <style>
+    .ratecard-header {
+      padding: 60px 0 30px 0;
+      text-align: center;
+    }
+    
+    .ratecard-header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+    
+    .ratecard-header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Toggle Switch Wrapper */
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .toggle-switch {
+      background-color: var(--primary-light);
+      border: 1px solid var(--border);
+      padding: 6px;
+      border-radius: 100px;
+      display: flex;
+      gap: 4px;
+      position: relative;
+    }
+
+    .toggle-btn {
+      border: none;
+      background: none;
+      padding: 10px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: 100px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .toggle-btn.active {
+      background-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+    }
+
+    /* Pricing Section */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .pricing-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .pricing-card.popular {
+      border: 2px solid var(--primary);
+    }
+
+    .popular-tag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background-color: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pricing-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .pricing-card .price {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--text-main);
+      margin: 16px 0;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .pricing-card .price span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0;
+    }
+
+    .pricing-card p.description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+
+    .pricing-card ul li {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pricing-card ul li i {
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    /* Info Info Section */
+    .terms-section {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 60px;
+    }
+
+    .terms-section h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .terms-section h3 i {
+      color: var(--primary);
+    }
+
+    .terms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .term-item h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .term-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      transition: color 0.2s;
+    }
+
+    .back-btn:hover {
+      color: var(--primary);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Tezza<span>Fazar</span></a>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="index.html#about">About</a></li>
+        <li><a class="nav-link" href="index.html#resume">Experience</a></li>
+        <li><a class="nav-link" href="index.html#portfolio">Portfolio</a></li>
+        <li><a class="nav-link" href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 40px;">
+    
+    <a href="index.html" class="back-btn">
+      <i class="bi bi-arrow-left"></i> Back to Home
+    </a>
+
+    <!-- Header -->
+    <div class="ratecard-header">
+      <h1>Freelance Rate Card</h1>
+      <p>Flexible engagement models tailored for your project requirements.</p>
+    </div>
+
+    <!-- Region Toggle Switch -->
+    <div class="toggle-container">
+      <div class="toggle-switch">
+        <button class="toggle-btn active" id="btn-asia" onclick="setRegion('asia')">Asia & International</button>
+        <button class="toggle-btn" id="btn-id" onclick="setRegion('id')">Indonesia</button>
+      </div>
+    </div>
+
+    <!-- Pricing Grid -->
+    <div class="pricing-grid">
+      <!-- Hourly -->
+      <div class="pricing-card">
+        <h3>Hourly Rate</h3>
+        <div class="price">
+          <span class="currency">$</span><span class="amount" id="price-hourly">30</span>
+          <span class="period">/ hour</span>
+        </div>
+        <p class="description">Ideal for ad-hoc consultation, bug fixing, emergency hotfixes, or short-term assistance.</p>
+        <ul>
+          <li><i class="bi bi-check2"></i> <span id="lbl-h1">Direct developer access</span></li>
+          <li><i class="bi bi-check2"></i> <span id="lbl-h2">Timesheet logging</span></li>
+          <li><i class="bi bi-check2"></i> <span id="lbl-h3">Flexible schedule</span></li>
+        </ul>
+      </div>
+
+      <!-- Part-Time Retainer -->
+      <div class="pricing-card popular">
+        <div class="popular-tag">Popular</div>
+        <h3>Part-Time Retainer</h3>
+        <div class="price">
+          <span class="currency">$</span><span class="amount" id="price-parttime">2,000</span>
+          <span class="period">/ month</span>
+        </div>
+        <p class="description">Perfect for continuous feature developments, integrations, and weekly system maintenance.</p>
+        <ul>
+          <li><i class="bi bi-check2"></i> <span id="lbl-p1">~20 hours per week</span></li>
+          <li><i class="bi bi-check2"></i> <span id="lbl-p2">Dedicated development</span></li>
+          <li><i class="bi bi-check2"></i> <span id="lbl-p3">SGT Timezone alignment</span></li>
+          <li><i class="bi bi-check2"></i> <span id="lbl-p4">Bi-weekly progress updates</span></li>
+        </ul>
+      </div>
+
+      <!-- Project-Based -->
+      <div class="pricing-card">
+        <h3>Project-Based</h3>
+        <div class="price">
+          <span class="currency">Starts at $</span><span class="amount" id="price-project">1,500</span>
+          <span class="period"></span>
+        </div>
+        <p class="description">Best for custom full-cycle product development with a defined scope of work.</p>
+        <ul>
+          <li><i class="bi bi-check2"></i> <span id="lbl-f1">Fixed price & clear scope</span></li>
+          <li><i class="bi bi-check2"></i> <span id="lbl-f2">Milestone-based delivery</span></li>
+          <li><i class="bi bi-check2"></i> <span id="lbl-f3">System architecture design</span></li>
+          <li><i class="bi bi-check2"></i> <span id="lbl-f4">30 days free support</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Engagement Terms -->
+    <div class="terms-section">
+      <h3><i class="bi bi-shield-check"></i> Engagement Terms</h3>
+      <div class="terms-grid">
+        <div class="term-item">
+          <h4>Availability</h4>
+          <p id="term-avail">Flexible schedule. Ready to align and communicate on Singapore Time (SGT) or Western Indonesia Time (WIB).</p>
+        </div>
+        <div class="term-item">
+          <h4>Payment Methods</h4>
+          <p id="term-pay">Wise transfer (highly preferred), Bank Transfer, or PayPal.</p>
+        </div>
+        <div class="term-item">
+          <h4>Invoicing Terms</h4>
+          <p id="term-invoice">Retainers are invoiced bi-weekly or monthly. Project-based works require a 50% upfront deposit.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer style="margin-top: auto;">
+    <div class="container">
+      <p>&copy; 2026 Tezza Fazar Tri Hidayat. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const data = {
+      asia: {
+        currency: "$",
+        hourly: "30",
+        parttime: "2,000",
+        project: "1,500",
+        lblH1: "Direct developer access",
+        lblH2: "Timesheet logging",
+        lblH3: "Flexible schedule",
+        lblP1: "~20 hours per week",
+        lblP2: "Dedicated development",
+        lblP3: "SGT Timezone alignment",
+        lblP4: "Bi-weekly progress updates",
+        lblF1: "Fixed price & clear scope",
+        lblF2: "Milestone-based delivery",
+        lblF3: "System architecture design",
+        lblF4: "30 days free support",
+        termAvail: "Flexible schedule. Ready to align and communicate on Singapore Time (SGT) or Western Indonesian Time (WIB).",
+        termPay: "Wise transfer (highly preferred), Local Bank Transfer (SGD/USD), or PayPal.",
+        termInvoice: "Retainers are invoiced bi-weekly or monthly. Project-based works require a 50% upfront deposit."
+      },
+      id: {
+        currency: "Rp",
+        hourly: "250.000",
+        parttime: "15.000.000",
+        project: "10.000.000",
+        lblH1: "Akses langsung developer",
+        lblH2: "Laporan jam kerja (Timesheet)",
+        lblH3: "Jadwal kerja fleksibel",
+        lblP1: "~20 jam per minggu",
+        lblP2: "Dukungan berkelanjutan",
+        lblP3: "WIB Timezone alignment",
+        lblP4: "Laporan progres dwi-mingguan",
+        lblF1: "Harga tetap & lingkup jelas",
+        lblF2: "Pengiriman berbasis milestone",
+        lblF3: "Desain arsitektur sistem",
+        lblF4: "Garansi dukungan gratis 30 hari",
+        termAvail: "Jadwal fleksibel. Siap berkolaborasi sesuai jam kerja Indonesia Barat (WIB).",
+        termPay: "Transfer Bank Lokal (BCA/Mandiri) atau QRIS.",
+        termInvoice: "Model retainer ditagih dwi-mingguan/bulanan. Project-based membutuhkan DP 50% di awal."
+      }
+    };
+
+    function setRegion(region) {
+      // Toggle active classes on buttons
+      document.getElementById('btn-asia').classList.toggle('active', region === 'asia');
+      document.getElementById('btn-id').classList.toggle('active', region === 'id');
+
+      // Update currency and prices
+      const currencyElements = document.querySelectorAll('.price .currency');
+      currencyElements.forEach((el, index) => {
+        if (index === 2) { // Project-based prefix currency
+          el.innerText = region === 'asia' ? 'Starts at $' : 'Mulai Rp ';
+        } else {
+          el.innerText = data[region].currency + " ";
+        }
+      });
+      
+      document.getElementById('price-hourly').innerText = data[region].hourly;
+      document.getElementById('price-parttime').innerText = data[region].parttime;
+      document.getElementById('price-project').innerText = data[region].project;
+
+      // Update card list labels
+      document.getElementById('lbl-h1').innerText = data[region].lblH1;
+      document.getElementById('lbl-h2').innerText = data[region].lblH2;
+      document.getElementById('lbl-h3').innerText = data[region].lblH3;
+      document.getElementById('lbl-p1').innerText = data[region].lblP1;
+      document.getElementById('lbl-p2').innerText = data[region].lblP2;
+      document.getElementById('lbl-p3').innerText = data[region].lblP3;
+      document.getElementById('lbl-p4').innerText = data[region].lblP4;
+      document.getElementById('lbl-f1').innerText = data[region].lblF1;
+      document.getElementById('lbl-f2').innerText = data[region].lblF2;
+      document.getElementById('lbl-f3').innerText = data[region].lblF3;
+      document.getElementById('lbl-f4').innerText = data[region].lblF4;
+
+      // Update terms details
+      document.getElementById('term-avail').innerText = data[region].termAvail;
+      document.getElementById('term-pay').innerText = data[region].termPay;
+      document.getElementById('term-invoice').innerText = data[region].termInvoice;
+    }
+  </script>
+</body>
+
+</html>
